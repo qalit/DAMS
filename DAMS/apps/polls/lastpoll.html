@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Poll</title>
+		<body>
+			<h1>Polls</h1>
+			<ul>
+				{% for poll in poll_list %}
+				<li>
+					{{poll.name}}
+				</li>
+				{% endfor %}
+			</ul>
+		</body>
+	</head>
+</html>
