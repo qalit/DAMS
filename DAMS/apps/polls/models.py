@@ -16,8 +16,6 @@ class Choise(models.Model):
     poll = models.ForeignKey(Poll)
     choice_texr = models.CharField(max_length=200)
     votes = models.IntegerField(default=0)
-     def __unicode__(self):
+    
+    def __unicode__(self):
         return self.choice
-
-class Identity(models.Model):
-    Ident = UserAgent

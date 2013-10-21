@@ -118,9 +118,10 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blogs','home','templates',
-    'polls',
-    'DAMS.apps.about',
+    'DAMS.apps.blogs',
+    'DAMS.apps.home',
+    'DAMS.templates',
+    #'DAMS.apps.about',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
