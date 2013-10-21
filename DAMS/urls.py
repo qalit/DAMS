@@ -11,6 +11,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', include('DAMS.apps.home.urls')),
+    url(r'^$', include('registration.backends.default.urls'))
     # url(r'^DAMS/', include('DAMS.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
