@@ -53,7 +53,7 @@ class RegistrationModelTests(TestCase):
         new_user = User.objects.create_user(**self.user_info)
         profile = RegistrationProfile.objects.create_profile(new_user)
         profile.send_activation_email(Site.objects.get_current())
-        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(len(self.outbox), 1)
         self.assertEqual(mail.outbox[0].to, [self.user_info['email']])
 
     def test_user_creation(self):
@@ -76,7 +76,7 @@ class RegistrationModelTests(TestCase):
         """
         new_user = RegistrationProfile.objects.create_inactive_user(site=Site.objects.get_current(),
                                                                     **self.user_info)
-        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(len(self.outbox), 1)
 
     def test_user_creation_no_email(self):
         """
@@ -87,7 +87,7 @@ class RegistrationModelTests(TestCase):
         new_user = RegistrationProfile.objects.create_inactive_user(site=Site.objects.get_current(),
                                                                     send_email=False,
                                                                     **self.user_info)
-        self.assertEqual(len(mail.outbox), 0)
+        self.assertEqual(len(self.outbox), 0)
 
     def test_unexpired_account(self):
         """
