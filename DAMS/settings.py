@@ -1,4 +1,8 @@
 # Django settings for DAMS project.
+import os
+import django.contrib.auth
+django.contrib.auth.LOGIN_URL = '/'
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -6,6 +10,7 @@ ADMINS = (('Al Qalit', 'qal.smith@gmail.com'),
 )
 
 MANAGERS = ADMINS
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 DATABASES = {
     'default': {
@@ -106,6 +111,7 @@ ROOT_URLCONF = 'DAMS.urls'
 WSGI_APPLICATION = 'DAMS.wsgi.application'
 
 TEMPLATE_DIRS = (
+                 os.path.join(os.path.dirname(__file__), ' templates'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -122,6 +128,7 @@ INSTALLED_APPS = (
     'DAMS.apps.home',
     'DAMS.templates',
     'DAMS.apps.registration',
+    'DAMS.apps.login',
     #'DAMS.apps.about',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',

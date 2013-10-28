@@ -1,0 +1,3 @@
+[submodule "DAMS/apps/smanagement"]
+	path = DAMS/apps/smanagement
+	url = https://github.com/bradleywright/django-static-management.git
