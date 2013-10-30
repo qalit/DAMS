@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-
+from DAMS.apps.login.views import *
 #from apps.about.views import about, current_time
 
 # Uncomment the next two lines to enable the admin:
@@ -10,7 +10,8 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', include('DAMS.apps.home.urls')),
-    url(r'^$', include('DAMS.apps.registration.backends.default.urls'))
+    url(r'^$', include('DAMS.apps.registration.backends.default.urls')),
+    url(r'^', include('DAMS.apps.login.urls'))
     # url(r'^DAMS/', include('DAMS.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
