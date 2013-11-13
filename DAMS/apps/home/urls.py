@@ -1,6 +1,5 @@
 from django.conf.urls.defaults import *
  
-urlpatterns = patterns('',
-                       (r'^$', 'DAMS.apps.home.views.index'),
-                        
-                       )
+urlpatterns = patterns('home.views', 
+    url(r'^$', 'home', (), 'home')
+)

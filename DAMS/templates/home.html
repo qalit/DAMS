@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load project_tags %}
+
+{% block content %}
+    <div class="content">
+        <div class="tc"><h1>{% project_name %}</h1></div>
+        <div class="tc"><img src="images/archive-box1.jpg" /></div>
+    </div>
+{% endblock %}
+{% block footer %}
+{% include "footer.html" %}
+{% endblock %}

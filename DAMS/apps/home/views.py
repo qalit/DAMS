@@ -1,4 +1,6 @@
-from django.http import HttpResponse
-from DAMS.apps.about import *
-def index(request):
-    return HttpResponse("Index Page")
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+
+def Home(request):
+    return render_to_response('home.html', {},
+                              context_instance=RequestContext(request))
