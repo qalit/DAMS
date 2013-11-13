@@ -1,26 +1,33 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls.defaults import *
+from django.conf import settings
 from django.contrib import admin
-from DAMS.apps.login.views import *
-#from apps.about.views import about, current_time
-
-# Uncomment the next two lines to enable the admin:
 
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    url(r'^$', include('DAMS.apps.home.urls')),
-    url(r'^$', include('DAMS.apps.registration.backends.default.urls')),
-    url(r'^', include('DAMS.apps.login.urls'))
-    # url(r'^DAMS/', include('DAMS.foo.urls')),
+    #----Django
+    #(r'^orig_admin/doc/', include('django.contrib.admindocs.urls')),
+    (r'^admin/', include(admin.site.urls)),
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    #url(r'^admin/', include('admin.site.urls')),
-    #url(r'^polls/$', Poll),
-
-    #url(r'^about/time/$', current_time),
-    #url(r'^polls/', include('polls.urls')),
+    #(r'^i18n/', include('django.conf.urls.i18n')),
+    
+    #----Project
+    (r'^', include('common.urls')),
+    (r'^', include('main.urls')),
+    (r'^inventory/', include('inventory.urls')),
+    (r'^assets/', include('assets.urls')),
+    (r'^search/', include('dynamic_search.urls')),
+    (r'^import/', include('importer.urls')),
+    (r'^movements/', include('movements.urls')),
+    (r'^generic_photos/', include('photos.urls')),    
 )
+
+if settings.DEVELOPMENT:
+    urlpatterns += patterns('',
+        (r'^django-inventory-site_media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'site_media', 'show_indexes': True}),
+    )
+
+    if 'rosetta' in settings.INSTALLED_APPS:
+        urlpatterns += patterns('',
+            url(r'^rosetta/', include('rosetta.urls'), name = "rosetta"),
+        )

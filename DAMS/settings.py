@@ -1,9 +1,8 @@
 # Django settings for DAMS project.
 import os
-import django.contrib.auth
-django.contrib.auth.LOGIN_URL = '/'
 
 DEBUG = True
+DEVELOPMENT = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (('Al Qalit', 'qal.smith@gmail.com'),
@@ -15,7 +14,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'dayahaceh',                      # Or path to database file if using sqlite3.
+        'NAME': 'dams',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': 'root',
         'PASSWORD': 'backdoor',
@@ -110,8 +109,7 @@ ROOT_URLCONF = 'DAMS.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'DAMS.wsgi.application'
 
-TEMPLATE_DIRS = (
-                 os.path.join(os.path.dirname(__file__), ' templates'),
+TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), 'templates'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -124,15 +122,22 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'DAMS.apps.blogs',
-    'DAMS.apps.home',
-    'DAMS.templates',
-    'DAMS.apps.login',
-    #'DAMS.apps.about',
-    # Uncomment the next line to enable the admin:
+    'django_admin_bootstrapped',
     'django.contrib.admin',
+#    'DAMS.apps.pagination',
+## Apps
+    'DAMS.apps.home',
+    'DAMS.apps.common',
+    'DAMS.apps.assets',
+    'DAMS.apps.dynamic_search',
+    'DAMS.apps.generic_views',
+    'DAMS.apps.inventory',
+#    'DAMS.apps.blogs',
+    'DAMS.apps.web_theme',
+#     
+#     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
-    'django.contrib.admindocs',
+#    'django.contrib.admindocs',
 )
 
 # A sample logging configuration. The only tangible logging
